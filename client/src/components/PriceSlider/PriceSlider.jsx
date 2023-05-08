@@ -8,31 +8,27 @@ function PriceSlider({ maxPrice }) {
   const [max, setMax] = useState(maxPrice);
   const {catalog} = useContext(AppContext);
 
-  let {products} = catalog;
   const handlePriceChange = (value) => {
     setMin(parseInt(value[0]));
     setMax(parseInt(value[1]));
-
-
   };
+
 useEffect(()=>{
-	catalog.minPrice = min;
-	catalog.maxPrice = max;
+	catalog.minPrice = Number(min);
+	catalog.maxPrice = Number(max);
 } , [max , min])
   const handleChange = (e, name) => {
     const inputValue = e.target.value.replace(/\D/g, '');
 
     if (/^\d*$/.test(inputValue) && inputValue <= maxPrice) {
       if (name === 'min') {
-        setMin(e.target.value);
+        setMin(Number(e.target.value));
       } else {
-        setMax(e.target.value);
+        setMax(Number(e.target.value));
       }
     } else if (inputValue > maxPrice) {
       setMax(maxPrice);
     }
-	catalog.minPrice = min;
-	catalog.maxPrice = max;
   };
 
   const handlePaste = (event) => {
@@ -40,8 +36,6 @@ useEffect(()=>{
     if (!/^\d*$/.test(pastedValue) || parseInt(pastedValue) > maxPrice) {
       event.preventDefault();
     }
-	catalog.minPrice = min;
-	catalog.maxPrice = max;
 
   };
 
@@ -54,8 +48,6 @@ useEffect(()=>{
     ) {
       event.preventDefault();
     }
-	catalog.minPrice = min;
-	catalog.maxPrice = max;
   };
 
   return (

@@ -236,9 +236,8 @@ const Shop = observer(() => {
 			const filtered  =	data.rows.filter(product=>{
 				return product.price > catalog.minPrice && product.price <= catalog.maxPrice;
 			});
-			console.log(catalog.maxPrice);
 		
-			catalog.count = data.count;
+		catalog.count = data.count;
 		 filtered.splice(catalog.limit * catalog.page ,filtered.length);
             catalog.products = filtered;
 	
