@@ -1,0 +1,69 @@
+.horizontal-slider {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  height: 62px;
+}
+.example-thumb {
+  cursor: pointer;
+  position: absolute;
+  z-index: 100;
+  background: #ffffff;
+  border: 3px solid #3774ff;
+  border-radius: 100%;
+  display: block;
+  box-shadow: 0 0 2px 0 rgb(0 0 0 / 44%);
+}
+/* .example-thumb.active {
+  background-color: grey;
+} */
+.example-track {
+  position: relative;
+  background: #ddd;
+}
+.example-track.example-track-1 {
+  background: #83a9ff;
+}
+.horizontal-slider .example-track {
+  top: 20px;
+  height: 4px;
+}
+.horizontal-slider .example-thumb {
+  display: flex;
+  justify-content: center;
+  top: 15px;
+  width: 16px;
+  outline: none;
+  height: 16px;
+  line-height: 48px;
+  color: #999999;
+}
+.prices {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.prices_inp {
+  width: 97%;
+  padding: 5px 5px 5px 10px;
+  outline: none;
+  border: 2px solid #e3e3e3;
+  border-radius: 10px;
+}
+
+.prices_inp::-webkit-outer-spin-button,
+.prices_inp::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+.prices_container {
+  position: relative;
+}
+.prices_container:first-child::after {
+  position: absolute;
+  content: '-';
+  top: 4px;
+  left: 99%;
+  font-size: 18px;
+}
